@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Familiedans - Taastrup Medborgerhus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Biodanza-inspired organic palette - vitality, earth, warmth */
+            --earth-brown: #8B4513;
+            --warm-orange: #E07A5F;
+            --sunset-pink: #F2CC8F;
+            --natural-green: #81B29A;
+            --forest-deep: #3D405B;
+            --sky-warm: #FFE4B5;
+            --cream: #FFF8E7;
+            --energy-red: #E63946;
+            --joy-yellow: #F4A261;
+            --movement-purple: #9D4EDD;
+            --biodanza-wine: #6A2C70;
+            --biodanza-terracotta: #B83B5E;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Organic flowing background */
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+            animation: orb-float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--biodanza-wine), transparent);
+            top: -10%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--biodanza-terracotta), transparent);
+            bottom: -10%;
+            right: -10%;
+            animation-delay: -7s;
+        }
+
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--natural-green), transparent);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -14s;
+        }
+
+        @keyframes orb-float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--joy-yellow);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: float-particle 18s infinite linear;
+        }
+
+        .particle:nth-child(2n) { background: var(--warm-orange); width: 4px; height: 4px; }
+        .particle:nth-child(3n) { background: var(--sunset-pink); width: 8px; height: 8px; }
+        .particle:nth-child(4n) { background: var(--natural-green); width: 5px; height: 5px; }
+        .particle:nth-child(5n) { background: var(--biodanza-wine); width: 3px; height: 3px; }
+
+        @keyframes float-particle {
+            0% { transform: translateY(110vh) translateX(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) translateX(50px); opacity: 0; }
+        }
+
+        /* Organic wave at bottom */
+        .wave-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: -50%;
+            width: 200%;
+            height: 200px;
+            background: linear-gradient(90deg, var(--biodanza-wine), var(--biodanza-terracotta), var(--warm-orange));
+            opacity: 0.08;
+            border-radius: 50% 50% 0 0;
+            animation: wave-motion 12s ease-in-out infinite;
+        }
+
+        .wave:nth-child(2) {
+            animation-delay: -6s;
+            opacity: 0.05;
+            height: 150px;
+        }
+
+        @keyframes wave-motion {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(-25%) translateY(-30px); }
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .location-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--natural-green), #2D5016);
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 20px rgba(129, 178, 154, 0.3);
+            animation: pulse-glow 3s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 4px 20px rgba(129, 178, 154, 0.3); }
+            50% { box-shadow: 0 4px 30px rgba(129, 178, 154, 0.5); }
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, 
+                var(--biodanza-wine) 0%, 
+                var(--biodanza-terracotta) 20%,
+                var(--warm-orange) 40%, 
+                var(--joy-yellow) 60%, 
+                var(--natural-green) 80%,
+                var(--biodanza-wine) 100%);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 8s ease infinite, breathe 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px rgba(106, 44, 112, 0.4));
+            letter-spacing: -3px;
+            line-height: 1.1;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.02) translateY(-5px); }
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--sky-warm);
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-top: 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 3rem 0 4rem;
+            animation: fadeIn 1s ease 0.3s both;
+        }
+
+        .hero-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--joy-yellow);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #e8e8e8;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: var(--sunset-pink);
+            font-weight: 700;
+        }
+
+        .time-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(224, 122, 95, 0.2);
+            border: 1px solid rgba(224, 122, 95, 0.4);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            color: var(--warm-orange);
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .hero-image {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+            transform: rotate(1deg);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .hero-image:hover {
+            transform: rotate(0deg) scale(1.03);
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(61, 64, 91, 0.95), transparent);
+            padding: 2.5rem 2rem 1.5rem;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Info Cards */
+        .info-section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: var(--sunset-pink);
+            font-weight: 700;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--biodanza-wine), var(--biodanza-terracotta), var(--warm-orange));
+            transform: scaleX(0);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .info-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .info-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.2rem;
+            display: block;
+            animation: gentle-bob 3s ease-in-out infinite;
+        }
+
+        .info-card:nth-child(2) .card-icon { animation-delay: 0.5s; }
+        .info-card:nth-child(3) .card-icon { animation-delay: 1s; }
+        .info-card:nth-child(4) .card-icon { animation-delay: 1.5s; }
+
+        @keyframes gentle-bob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--joy-yellow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-info {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        /* Values Section - Biodanza essence */
+        .values-section {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .values-intro {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            color: #d0d0d0;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .values-grid {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .value-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            animation: float-value 4s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        .value-item:nth-child(2) { animation-delay: 1.3s; }
+        .value-item:nth-child(3) { animation-delay: 2.6s; }
+
+        @keyframes float-value {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .value-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--biodanza-wine), var(--biodanza-terracotta));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 15px 40px rgba(106, 44, 112, 0.4);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-circle::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.6s ease;
+        }
+
+        .value-item:hover .value-circle {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 20px 50px rgba(184, 59, 94, 0.5);
+        }
+
+        .value-item:hover .value-circle::before {
+            transform: scale(1);
+        }
+
+        .value-text {
+            font-weight: 700;
+            color: var(--sky-warm);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .value-desc {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 200px;
+            margin-top: -0.5rem;
+        }
+
+        /* Gallery */
+        .gallery-section {
+            padding: 4rem 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(61, 64, 91, 0.95), transparent);
+            padding: 2rem 1.5rem 1.2rem;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Signup Section */
+        .signup-section {
+            padding: 4rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .signup-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+            backdrop-filter: blur(25px);
+            border: 2px solid rgba(255, 255, 255, 0.12);
+            border-radius: 32px;
+            padding: 3.5rem;
+            max-width: 520px;
+            width: 100%;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signup-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(106, 44, 112, 0.15) 0%, transparent 70%);
+            animation: rotate 25s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .signup-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--joy-yellow);
+            position: relative;
+            z-index: 1;
+            font-weight: 800;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: var(--sky-warm);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 1rem 1.3rem;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            background: rgba(0, 0, 0, 0.25);
+            color: white;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--warm-orange);
+            box-shadow: 0 0 25px rgba(224, 122, 95, 0.3);
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        select option {
+            background: #1a1a2e;
+            color: white;
+            padding: 10px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.3rem;
+            background: linear-gradient(135deg, var(--biodanza-terracotta), var(--warm-orange));
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 12px 35px rgba(184, 59, 94, 0.4);
+            z-index: 1;
+            margin-top: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 18px 45px rgba(184, 59, 94, 0.5);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .submit-btn:active::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            animation: success-pop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        @keyframes success-pop {
+            0% { opacity: 0; transform: scale(0.5) rotate(-5deg); }
+            70% { transform: scale(1.05) rotate(1deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0); }
+        }
+
+        .success-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            animation: bounce 1.2s ease infinite;
+            display: inline-block;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .success-title {
+            font-size: 2rem;
+            color: var(--joy-yellow);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .success-text {
+            color: #d0d0d0;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .success-text strong {
+            color: var(--sunset-pink);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
+        }
+
+        .footer-heart {
+            color: var(--biodanza-terracotta);
+            animation: heartbeat 1.5s ease infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        /* Utility animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; letter-spacing: -1px; }
+            .hero { grid-template-columns: 1fr; gap: 2rem; }
+            .hero-image { order: -1; }
+            .hero-image img { height: 300px; }
+            .values-grid { gap: 2.5rem; }
+            .signup-card { padding: 2rem; border-radius: 24px; }
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Organic background orbs -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <!-- Floating particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Organic waves -->
+    <div class="wave-container">
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <div class="content">
+        <!-- Header -->
+        <header>
+            <div class="location-badge">📍 Taastrup Medborgerhus</div>
+            <h1>Familiedans</h1>
+            <p class="subtitle">Bevægelse, glæde og fællesskab for hele familien</p>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Dans dig glad!</h2>
+                <p>
+                    Familiedans er et magisk rum hvor børn og voksne sammen udforsker kroppens glæde gennem bevægelse. 
+                    Her er der plads til at grine, danse frit og finde ro i kroppen. 
+                    <span class="highlight">Ingen forudgående erfaring nødvendig</span> – bare lyst til at være sammen og bevæge dig!
+                </p>
+                <div class="time-badge">
+                    <span>🕐</span>
+                    <span>Hver fredag kl. 16:15-17:15</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://kimi-web-img.moonshot.cn/img/images.stockcake.com/ec40e6742f4c944b92f47f84c6531f827812d292.jpg" alt="Børn danser i farverigt lys">
+                <div class="image-caption">
+                    💃 Fri bevægelse og kreativitet for hele familien
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Cards -->
+        <section class="info-section">
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="card-icon">📅</span>
+                    <div class="card-title">Hvornår</div>
+                    <div class="card-info">Fredage 16:15-17:15</div>
+                </div>
+                <div class="info-card">
+                    <span class="card-icon">📍</span>
+                    <div class="card-title">Hvor</div>
+                    <div class="card-info">Taastrup Medborgerhus</div>
+                </div>
+                <div class="info-card">
+                    <span class="card-icon">👨‍👩‍👧‍👦</span>
+                    <div class="card-title">Hvem</div>
+                    <div class="card-info">Hele familien</div>
+                </div>
+                <div class="info-card">
+                    <span class="card-icon">💰</span>
+                    <div class="card-title">Pris</div>
+                    <div class="card-info">Gratis deltagelse</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values-section">
+            <h2 class="section-title">Værdier vi danser med</h2>
+            <p class="values-intro">
+                Gennem dans og bevægelse finder vi glæden i nuet. 
+                Vi skaber et trygt rum hvor kroppen får lov at udtrykke sig frit, 
+                hvor vi mødes i ægte nærvær og hvor smilene er ægte.
+            </p>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-circle">💃</div>
+                    <span class="value-text">Bevægelse</span>
+                    <span class="value-desc">Lad kroppen finde sin egen vej i musikken</span>
+                </div>
+                <div class="value-item">
+                    <div class="value-circle">😊</div>
+                    <span class="value-text">Glæde</span>
+                    <span class="value-desc">Smil, grin og find lykken i nuet sammen</span>
+                </div>
+                <div class="value-item">
+                    <div class="value-circle">🤝</div>
+                    <span class="value-text">Fællesskab</span>
+                    <span class="value-desc">Sammen skaber vi varme og forbindelse</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section class="gallery-section">
+            <h2 class="section-title">Stemning fra vores dansegulv</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/images.stockcake.com/386ec3672becdbac420d1a9ba79b2ad317f45de7.jpg" alt="Familie danser sammen i ring">
+                    <div class="gallery-caption">
+                        👨‍👩‍👧‍👦 Familie danser sammen
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/thumbs.dreamstime.com/7286a1a10a4ab1bf126eb310a6c69a4eddd136c0.jpg" alt="Børn holder hinanden i hænderne og danser">
+                    <div class="gallery-caption">
+                        🤝 Sammen er vi stærkere
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/images.stockcake.com/808693f218777bbb80dd7ea3461411a340c862e1.jpg" alt="Børn danser i magisk lys">
+                    <div class="gallery-caption">
+                        ✨ Magiske øjeblikke af glæde
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Signup Section -->
+        <section class="signup-section" id="tilmelding">
+            <div class="signup-card">
+                <div id="form-container">
+                    <h2 class="signup-title">🎉 Tilmeld dig Familiedans</h2>
+                    <form id="signupForm" onsubmit="handleSignup(event)">
+                        <div class="form-group">
+                            <label for="parentName">Forælders navn *</label>
+                            <input type="text" id="parentName" name="parentName" required placeholder="Dit fulde navn">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="din@email.dk">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+45 12 34 56 78">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="childName">Barnets navn *</label>
+                            <input type="text" id="childName" name="childName" required placeholder="Barnets navn">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="childAge">Barnets alder *</label>
+                            <select id="childAge" name="childAge" required>
+                                <option value="">Vælg alder</option>
+                                <option value="3-5">3-5 år</option>
+                                <option value="6-8">6-8 år</option>
+                                <option value="9-12">9-12 år</option>
+                                <option value="teen">13+ år</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Besked (valgfri)</label>
+                            <input type="text" id="message" name="message" placeholder="Noget vi skal vide?">
+                        </div>
+                        
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            Send tilmelding
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="success-message" id="successMessage">
+                    <div class="success-icon">🎊</div>
+                    <h3 class="success-title">Tak for din tilmelding!</h3>
+                    <p class="success-text">
+                        Vi har sendt en bekræftelse til din email. Vi glæder os til at danse med jer!<br><br>
+                        <strong>Husk:</strong> Hver fredag kl. 16:15 i Taastrup Medborgerhus
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p class="footer-text">
+                Familiedans i Taastrup Medborgerhus • Skabt med <span class="footer-heart">❤️</span> til glæde og bevægelse
+            </p>
+            <p class="footer-text" style="margin-top: 0.8rem; font-size: 0.85rem;">
+                Spørgsmål? Skriv til os på <strong style="color: var(--sunset-pink)">anamahb@gmail.com</strong>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Generate floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 35; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 18 + 12) + 's';
+            particle.style.animationDelay = Math.random() * 18 + 's';
+            particle.style.opacity = Math.random() * 0.5 + 0.2;
+            particlesContainer.appendChild(particle);
+        }
+
+        // Handle form submission
+        function handleSignup(event) {
+            event.preventDefault();
+            
+            const formContainer = document.getElementById('form-container');
+            const successMessage = document.getElementById('successMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Change button state
+            submitBtn.innerHTML = 'Sender...';
+            submitBtn.disabled = true;
+            
+            // Build email body
+            const emailBody = `Ny tilmelding til Familiedans:%0D%0A%0D%0AForælder: ${encodeURIComponent(data.parentName)}%0D%0AEmail: ${encodeURIComponent(data.email)}%0D%0ATelefon: ${encodeURIComponent(data.phone || 'Ikke angivet')}%0D%0A%0D%0ABarn: ${encodeURIComponent(data.childName)}%0D%0AAlder: ${encodeURIComponent(data.childAge)}%0D%0A%0D%0ABesked: ${encodeURIComponent(data.message || 'Ingen')}%0D%0A%0D%0ATilmeldt: ${new Date().toLocaleString('da-DK')}`;
+            
+            // Open email client after brief delay
+            setTimeout(() => {
+                window.location.href = `mailto:anamahb@gmail.com?subject=Tilmelding til Familiedans - ${encodeURIComponent(data.childName)}&body=${emailBody}`;
+                
+                formContainer.style.display = 'none';
+                successMessage.classList.add('active');
+                
+                // Trigger confetti
+                startConfetti();
+            }, 1000);
+        }
+
+        // Confetti Effect
+        function startConfetti() {
+            const canvas = document.createElement('canvas');
+            canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999';
+            document.body.appendChild(canvas);
+            
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const colors = ['#6A2C70', '#B83B5E', '#E07A5F', '#F4A261', '#81B29A', '#F2CC8F'];
+            const confettiCount = 150;
+            const confetti = [];
+
+            for (let i = 0; i < confettiCount; i++) {
+                confetti.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    size: Math.random() * 10 + 5,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    speed: Math.random() * 4 + 2,
+                    angle: Math.random() * 360,
+                    rotation: Math.random() * 10 - 5,
+                    opacity: Math.random() * 0.5 + 0.5
+                });
+            }
+
+            let animationId;
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                let active = false;
+                confetti.forEach((piece) => {
+                    piece.y += piece.speed;
+                    piece.angle += piece.rotation;
+                    piece.x += Math.sin(piece.angle * 0.05) * 2;
+                    
+                    if (piece.y < canvas.height) {
+                        active = true;
+                        ctx.save();
+                        ctx.globalAlpha = piece.opacity;
+                        ctx.translate(piece.x, piece.y);
+                        ctx.rotate(piece.angle * Math.PI / 180);
+                        ctx.fillStyle = piece.color;
+                        ctx.fillRect(-piece.size / 2, -piece.size / 2, piece.size, piece.size);
+                        ctx.restore();
+                    }
+                });
+
+                if (active) {
+                    animationId = requestAnimationFrame(animate);
+                } else {
+                    if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
+                }
+            }
+            
+            animate();
+
+            // Stop after 4 seconds
+            setTimeout(() => {
+                cancelAnimationFrame(animationId);
+                if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
+            }, 4000);
+        }
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.info-card, .value-item, .gallery-item').forEach(el => {
+            el.style.cssText = 'opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
